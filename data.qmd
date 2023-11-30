@@ -27,7 +27,7 @@ Each row consists of 58 variables including (but not limited to) the percent of 
 library(VIM)
 library(openxlsx)  
 # Read Excel file
-data <- read.xlsx('~/Downloads/EDAV.xlsx')
+data <- read.csv('./data/GYTS4.csv')
 
 # Replace "--" with NA in numeric columns
 numeric_columns <- sapply(data, is.numeric)
