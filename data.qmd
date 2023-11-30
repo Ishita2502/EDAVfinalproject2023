@@ -19,7 +19,6 @@ Each row consists of 58 variables including (but not limited to) the percent of 
 
 
 ```{r}
-
 # Install and load necessary libraries (if not installed)
 # install.packages("VIM")
 library(VIM)
