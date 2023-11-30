@@ -1,4 +1,4 @@
-Introduction:
+# Introduction
 
 Adolescents are the most vulnerable population to initiate tobacco use. It is now well established that most of the adult users of tobacco start tobacco use in childhood or adolescence. There has been a perceptible fall in smoking in developed countries after the realization of the harmful effects of tobacco. The tobacco companies are now aggressively targeting their advertising strategies in developing countries like India. Understanding the prevalence and patterns of tobacco use in specific demographics, such as school-going children aged 13-15, is crucial for implementing targeted interventions and prevention strategies. The GYTS-4 is a robust survey designed to produce national estimates, providing valuable data on various aspects of tobacco use among school-going children.
 
