@@ -1,8 +1,9 @@
-Introduction:
+# Introduction:
 
 Adolescents are the most vulnerable population to initiate tobacco use. It is now well established that most of the adult users of tobacco start tobacco use in childhood or adolescence. There has been a perceptible fall in smoking in developed countries after the realization of the harmful effects of tobacco. The tobacco companies are now aggressively targeting their advertising strategies in developing countries like India. Understanding the prevalence and patterns of tobacco use in specific demographics, such as school-going children aged 13-15, is crucial for implementing targeted interventions and prevention strategies. The GYTS-4 is a robust survey designed to produce national estimates, providing valuable data on various aspects of tobacco use among school-going children.
 
 Smoking in teens is a growing concern for several reasons, reflecting the potential short-term and long-term health, social, and economic consequences, like:
+
 1. Health Risks: Adolescents who smoke are exposed to the same health risks as adults, including respiratory issues, cardiovascular diseases, and various cancers. 
 
 2. Addiction and Nicotine Dependence: Teens are more vulnerable to developing nicotine dependence than adults as the adolescent brain is still developing, and exposure to nicotine during this critical period can lead to addiction, making it harder for individuals to quit smoking later in life.
@@ -17,6 +18,7 @@ To address these concerns, comprehensive and evidence-based tobacco control stra
 We are attempting to figure out trends among teens currently smoking in each state, segregated by rural and urban areas, and assess how these trends are affected by exposure to tobacco smoke at home and in public places. Additionally, we aim to understand the impact of advertisements, warning labels, promotions, bans, and awareness programs initiated by their schools.
 
 Some questions that we plan to answer after our exploratory analysis and visualizations are:
+
 1. How do tobacco use rates (both ever use and current use) vary among states and between urban and rural areas in India?
 2. How easily can young individuals access tobacco products through stores and paan shops in different states across India?
 3. How effective are anti-tobacco messages and policies in mitigating tobacco use among the youth in India?

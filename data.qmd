@@ -2,4 +2,67 @@
 
 ## Description
 
+Our dataset is collected from the Open Government Data (OGD) Platform India.
+Released Under: National Data Sharing and Accessibility Policy (NDSAP)
+
+Contributor: Ministry of Health and Family Welfare, Department of Health and Family Welfare, International Institute for Population Sciences (IIPS)
+The data is obtained from the fourth round of the Global Youth Tobacco Survey (GYTS-4) conducted in 2019 by the International Institute for Population Sciences (IIPS) under the Ministry of Health and Family Welfare (MoHFW). 
+The survey was designed to produce national estimates of tobacco use among school-going children aged 13-15 years at the state level and Union Territory (UT) by sex, location of school (rural-urban), and management of school (public-private). The first three rounds of GYTS were conducted in 2003, 2006, and 2009. 
+
+A total of 97,302 students from 987 schools (Public-544; Private-443) participated in the survey. Of these, 80,772 students aged 13-15 years were considered for reporting. 
+The objective of the survey was to provide information on tobacco use, cessation, second-hand smoke, access and availability, exposure to anti-tobacco information, awareness and receptivity to tobacco marketing, knowledge, and attitudes.
+
+Each row consists of 58 variables including (but not limited to) the percent of current tobacco, cigarette, and bidi users in each Indian state (rural and urban), the median age of initiation, exposure at home, source of products, access to advertisements, anti-smoking campaigns, and percentage of schools creating awareness and following guidelines to be tobacco-free. 
+
 ## Missing value analysis
+
+
+
+```{r}
+
+
+
+# Install and load necessary libraries (if not installed)
+# install.packages("VIM")
+library(VIM)
+library(openxlsx)  
+# Read Excel file
+data <- read.xlsx('~/Downloads/EDAV.xlsx')
+
+# Replace "--" with NA in numeric columns
+numeric_columns <- sapply(data, is.numeric)
+data[, numeric_columns == "--" ]<- NA
+
+# Calculate the percentage of missing values in each variable
+missing_proportion <- colMeans(is.na(data) * 100)
+
+# Set graphical parameters for larger plot
+par(mfrow = c(1, 1), mar = c(5, 5, 2, 2)) 
+
+# Plot line graph with fewer x-axis ticks
+plot(missing_proportion, type = "b", pch = 20,
+     main = "Percentage of missing numbers for each feature",
+     xlab = "Feature Number",
+     ylab = "PPercentage of Missing number",
+     col = "blue")
+# Add grid lines
+grid()
+
+library(redav)
+library(ggplot2)
+library(tidyverse)
+tidycars <- data %>% 
+  rownames_to_column("id") %>% 
+  gather(key, value, -id) %>% 
+  mutate(missing = ifelse(is.na(value), "yes", "no"))
+
+ggplot(tidycars, aes(x = key, y = fct_rev(id), fill = missing)) +
+  geom_tile(color = "white") + 
+  ggtitle("mtcars with NAs added") +
+  ylab('') + 
+  scale_fill_viridis_d() + # discrete scale
+  theme_bw()
+
+
+```
+
