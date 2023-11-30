@@ -19,15 +19,15 @@ Each row consists of 58 variables including (but not limited to) the percent of 
 
 
 ```{r}
-
-
-
-# Install and load necessary libraries (if not installed)
+#Install and load necessary libraries (if not installed)
 # install.packages("VIM")
 library(VIM)
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("openxlsx")
 library(openxlsx)  
+
 # Read Excel file
-data <- read.csv('./data/GYTS4.csv')
+data <- read.xlsx('./data/EDAV.xlsx')
 
 # Replace "--" with NA in numeric columns
 numeric_columns <- sapply(data, is.numeric)
@@ -37,17 +37,20 @@ data[, numeric_columns == "--" ]<- NA
 missing_proportion <- colMeans(is.na(data) * 100)
 
 # Set graphical parameters for larger plot
-par(mfrow = c(1, 1), mar = c(5, 5, 2, 2)) 
+par(mfrow = c(1, 1), mar = c(5, 5, 2, 2))
 
 # Plot line graph with fewer x-axis ticks
 plot(missing_proportion, type = "b", pch = 20,
      main = "Percentage of missing numbers for each feature",
      xlab = "Feature Number",
-     ylab = "PPercentage of Missing number",
+     ylab = "Percentage of Missing number",
      col = "blue")
 # Add grid lines
 grid()
 
+```
+
+```{r}
 library(redav)
 library(ggplot2)
 library(tidyverse)
