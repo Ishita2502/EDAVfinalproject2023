@@ -19,7 +19,7 @@ Each row consists of 58 variables including (but not limited to) the percent of 
 
 
 ```{r}
-#Install and load necessary libraries (if not installed)
+
 # install.packages("VIM")
 library(VIM)
 options(repos = c(CRAN = "https://cloud.r-project.org"))
@@ -47,25 +47,6 @@ plot(missing_proportion, type = "b", pch = 20,
      col = "blue")
 # Add grid lines
 grid()
-
-```
-
-```{r}
-library(redav)
-library(ggplot2)
-library(tidyverse)
-tidycars <- data %>% 
-  rownames_to_column("id") %>% 
-  gather(key, value, -id) %>% 
-  mutate(missing = ifelse(is.na(value), "yes", "no"))
-
-ggplot(tidycars, aes(x = key, y = fct_rev(id), fill = missing)) +
-  geom_tile(color = "white") + 
-  ggtitle("mtcars with NAs added") +
-  ylab('') + 
-  scale_fill_viridis_d() + # discrete scale
-  theme_bw()
-
 
 ```
 
