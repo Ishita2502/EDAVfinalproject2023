@@ -20,14 +20,15 @@ Each row consists of 58 variables including (but not limited to) the percent of 
 
 ```{r}
 
-
-
 # Install and load necessary libraries (if not installed)
 # install.packages("VIM")
 library(VIM)
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+install.packages("openxlsx")
 library(openxlsx)  
+
 # Read Excel file
-data <- read.csv('./data/GYTS4.csv')
+data <- read.xlsx('./data/EDAV.xlsx')
 
 # Replace "--" with NA in numeric columns
 numeric_columns <- sapply(data, is.numeric)
@@ -43,26 +44,10 @@ par(mfrow = c(1, 1), mar = c(5, 5, 2, 2))
 plot(missing_proportion, type = "b", pch = 20,
      main = "Percentage of missing numbers for each feature",
      xlab = "Feature Number",
-     ylab = "PPercentage of Missing number",
+     ylab = "Percentage of Missing number",
      col = "blue")
 # Add grid lines
 grid()
-
-library(redav)
-library(ggplot2)
-library(tidyverse)
-tidycars <- data %>% 
-  rownames_to_column("id") %>% 
-  gather(key, value, -id) %>% 
-  mutate(missing = ifelse(is.na(value), "yes", "no"))
-
-ggplot(tidycars, aes(x = key, y = fct_rev(id), fill = missing)) +
-  geom_tile(color = "white") + 
-  ggtitle("mtcars with NAs added") +
-  ylab('') + 
-  scale_fill_viridis_d() + # discrete scale
-  theme_bw()
-
 
 ```
 
