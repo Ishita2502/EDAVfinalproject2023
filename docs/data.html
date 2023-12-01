@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>TBD - 2&nbsp; Data</title>
+<title>Global Youth Tobacco Survey: India - 2&nbsp; Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -123,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">TBD</a> 
+      <a href="./">Global Youth Tobacco Survey: India</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/Ishita2502/EDAVfinalproject2023" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
 </div>
@@ -176,8 +142,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">2.1</span> Description</a></li>
-  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">2.1</span> Description</a>
+  <ul class="collapse">
+  <li><a href="#source" id="toc-source" class="nav-link" data-scroll-target="#source"><span class="header-section-number">2.1.1</span> Source</a></li>
+  <li><a href="#about-the-dataset" id="toc-about-the-dataset" class="nav-link" data-scroll-target="#about-the-dataset"><span class="header-section-number">2.1.2</span> About the dataset</a></li>
+  </ul></li>
+  <li><a href="#research-plan" id="toc-research-plan" class="nav-link" data-scroll-target="#research-plan"><span class="header-section-number">2.2</span> Research Plan</a>
+  <ul class="collapse">
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values"><span class="header-section-number">2.2.1</span> Missing Values</a></li>
+  <li><a href="#non---numeric-values" id="toc-non---numeric-values" class="nav-link" data-scroll-target="#non---numeric-values"><span class="header-section-number">2.2.2</span> Non - Numeric Values</a></li>
+  <li><a href="#feature-reduction" id="toc-feature-reduction" class="nav-link" data-scroll-target="#feature-reduction"><span class="header-section-number">2.2.3</span> Feature Reduction</a></li>
+  <li><a href="#proposal" id="toc-proposal" class="nav-link" data-scroll-target="#proposal"><span class="header-section-number">2.2.4</span> Proposal</a></li>
+  </ul></li>
+  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Ishita2502/EDAVfinalproject2023/edit/main/data.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/Ishita2502/EDAVfinalproject2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -203,138 +180,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="description" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="description"><span class="header-section-number">2.1</span> Description</h2>
-<p>Our dataset is collected from the Open Government Data (OGD) Platform India. Released Under: National Data Sharing and Accessibility Policy (NDSAP)</p>
-<p>Contributor: Ministry of Health and Family Welfare, Department of Health and Family Welfare, International Institute for Population Sciences (IIPS) The data is obtained from the fourth round of the Global Youth Tobacco Survey (GYTS-4) conducted in 2019 by the International Institute for Population Sciences (IIPS) under the Ministry of Health and Family Welfare (MoHFW). The survey was designed to produce national estimates of tobacco use among school-going children aged 13-15 years at the state level and Union Territory (UT) by sex, location of school (rural-urban), and management of school (public-private). The first three rounds of GYTS were conducted in 2003, 2006, and 2009.</p>
+<section id="source" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="source"><span class="header-section-number">2.1.1</span> Source</h3>
+<ol type="1">
+<li>Our dataset is collected from the Open Government Data (OGD) Platform India.</li>
+<li>Released Under: National Data Sharing and Accessibility Policy (NDSAP)</li>
+<li>Contributor: Ministry of Health and Family Welfare, Department of Health and Family Welfare, International Institute for Population Sciences (IIPS).</li>
+<li>The data is obtained from the fourth round of the Global Youth Tobacco Survey (GYTS-4) conducted in 2019 by the International Institute for Population Sciences (IIPS) under the Ministry of Health and Family Welfare (MoHFW).</li>
+</ol>
+</section>
+<section id="about-the-dataset" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="about-the-dataset"><span class="header-section-number">2.1.2</span> About the dataset</h3>
+<p>The survey was designed to produce national estimates of tobacco use among school-going children aged 13-15 years at the state level and Union Territory (UT) by sex, location of school (rural-urban), and management of school (public-private). The first three rounds of GYTS were conducted in 2003, 2006, and 2009.</p>
 <p>A total of 97,302 students from 987 schools (Public-544; Private-443) participated in the survey. Of these, 80,772 students aged 13-15 years were considered for reporting. The objective of the survey was to provide information on tobacco use, cessation, second-hand smoke, access and availability, exposure to anti-tobacco information, awareness and receptivity to tobacco marketing, knowledge, and attitudes.</p>
 <p>Each row consists of 58 variables including (but not limited to) the percent of current tobacco, cigarette, and bidi users in each Indian state (rural and urban), the median age of initiation, exposure at home, source of products, access to advertisements, anti-smoking campaigns, and percentage of schools creating awareness and following guidelines to be tobacco-free.</p>
 </section>
-<section id="missing-value-analysis" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</h2>
+</section>
+<section id="research-plan" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="research-plan"><span class="header-section-number">2.2</span> Research Plan</h2>
+<section id="missing-values" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="missing-values"><span class="header-section-number">2.2.1</span> Missing Values</h3>
+<p>We plan to begin by comprehensively understanding our data, prioritizing the handling of missing and null values. Subsequent research on missing values, including the creation of relevant plots, will be conducted.</p>
+</section>
+<section id="non---numeric-values" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="non---numeric-values"><span class="header-section-number">2.2.2</span> Non - Numeric Values</h3>
+<p>Upon closer inspection, it was observed that certain data entries were represented as ‘&lt;7,’ signifying values below 7. Recognizing the importance of having numeric values for comprehensive visualization and analysis, a decision was made to address this issue by imputing the value of 7 in place of ‘&lt;7.’ This imputation strategy aimed to provide a standardized numeric representation, ensuring consistency in the dataset.</p>
+</section>
+<section id="feature-reduction" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="feature-reduction"><span class="header-section-number">2.2.3</span> Feature Reduction</h3>
+<p>In this step, the irrelevant columns that were not providing any useful information were removed. This was done to enhance model performance by mitigating the curse of dimensionality and improving computational efficiency, leading to more accurate and efficient models. By eliminating irrelevant or redundant features, feature reduction enhances generalization, reduces noise, and addresses issues like multicollinearity.</p>
+<p><strong>Total features - 58</strong></p>
+<ol type="1">
+<li><p>Ever users (Features 3, 5, 7, 9, 11, and 13) - The columns containing percent of ever tobacco, cigarette, and <em>bidi</em> users are dropped as we are focusing our research on the current users of these products in each state.</p></li>
+<li><p>Feature 26 ( <em>‘Exposure to tobacco smoke at home/public place (%)’</em>) is dropped as we already have <em>‘Exposure to tobacco smoke at home(%)’</em> and <em>‘Exposure to tobacco smoke inside any enclosed public places (%)’</em>, so it is not providing any new information</p></li>
+<li><p>Feature 36 and 37 ( <em>‘Current cigarette smokers who bought cigarettes from a store, paan shop, street vendor, or vending machine(%)’</em>) and ( <em>‘Current bidi smokers who bought bidi from a store, paan shop, or street vendor (%)’</em>) are dropped as well as it provides repetitive information.</p></li>
+<li><p>Feature 41 and 42 ( <em>‘Bought Cigarette as individual sticks in past 30 days(%)’</em>) and ( <em>‘Bought Bidi as individual sticks in past 30 days (%)’</em>) are dropped as they do not provide any meaningful insights.</p></li>
+</ol>
+<p><strong>New number of features - 47</strong></p>
+</section>
+<section id="proposal" class="level3" data-number="2.2.4">
+<h3 data-number="2.2.4" class="anchored" data-anchor-id="proposal"><span class="header-section-number">2.2.4</span> Proposal</h3>
+<ol type="1">
+<li>Compare tobacco use rates (current users) across different states and regions of India to identify patterns and trends geographically. This could examine differences between urban and rural areas as well.</li>
+<li>Study the effectiveness of anti-tobacco messages and tobacco control policies by correlating measures like exposure to messages, support for policies, quit attempts, etc. with tobacco use rates. This could identify best practices.</li>
+<li>Evaluate the impact of banning smoking in public places by comparing rates of exposure to secondhand smoke in public areas before and after implementation over time across states with different policies.</li>
+<li>Examine access to tobacco products among youth by analyzing refusal rates for cigarette/bidi sales due to age, sources of obtaining tobacco (store, paan shop), and exposure to point-of-sale advertising.</li>
+<li>Study knowledge, attitudes and perceptions related to tobacco use through measures like harm perception, quitting difficulty, anti-tobacco messaging to characterize differences across states and inform communication campaigns.</li>
+<li>Assess compliance with tobacco control policies (COTPA guidelines, school policies) through school administrator surveys and correlate strength of policy implementation with student tobacco use rates.</li>
+</ol>
+</section>
+</section>
+<section id="missing-value-analysis" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.3</span> Missing value analysis</h2>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Install and load necessary libraries (if not installed)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("VIM")</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VIM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: colorspace</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: grid</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>VIM is ready to use.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Suggestions and bug-reports can be submitted at: https://github.com/statistikat/VIM/issues</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'VIM'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:datasets':
-
-    sleep</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://cloud.r-project.org"</span>))</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"openxlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Installing package into 'C:/Users/Ishita Pundir/Documents/R/win-library/4.1'
-(as 'lib' is unspecified)</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>package 'openxlsx' successfully unpacked and MD5 sums checked</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: cannot remove prior installation of package 'openxlsx'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in file.copy(savedcopy, lib, recursive = TRUE): problem copying
-C:\Users\Ishita
-Pundir\Documents\R\win-library\4.1\00LOCK\openxlsx\libs\x64\openxlsx.dll to
-C:\Users\Ishita
-Pundir\Documents\R\win-library\4.1\openxlsx\libs\x64\openxlsx.dll: Permission
-denied</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: restored 'openxlsx'</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-The downloaded binary packages are in
-    C:\Temp\Rtmp6HOVl6\downloaded_packages</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)  </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read Excel file</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">'./data/EDAV.xlsx'</span>)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace "--" with NA in numeric columns</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>numeric_columns <span class="ot">&lt;-</span> <span class="fu">sapply</span>(data, is.numeric)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>data[, numeric_columns <span class="sc">==</span> <span class="st">"--"</span> ]<span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the percentage of missing values in each variable</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>missing_proportion <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(<span class="fu">is.na</span>(data) <span class="sc">*</span> <span class="dv">100</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Set graphical parameters for larger plot</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot line graph with fewer x-axis ticks</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(missing_proportion, <span class="at">type =</span> <span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Percentage of missing numbers for each feature"</span>,</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Feature Number"</span>,</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Percentage of Missing number"</span>,</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"blue"</span>)</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Add grid lines</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="data_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p><code>The line graph illustrates that feature number 15 has approximately 0.9% missing values, whereas feature 17 exhibits nearly double the percentage, with around 1.8% of missing values. Notably, the remaining features in this dataset show no instances of missing values, suggesting that the dataset is generally free from substantial issues related to incomplete data.</code></p>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(redav)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>-- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
-v dplyr     1.1.2     v readr     2.1.4
-v forcats   1.0.0     v stringr   1.5.0
-v lubridate 1.9.2     v tibble    3.2.1
-v purrr     1.0.1     v tidyr     1.3.0
--- Conflicts ------------------------------------------ tidyverse_conflicts() --
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()
-i Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>tidycars <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"id"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(key, value, <span class="sc">-</span>id) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">missing =</span> <span class="fu">ifelse</span>(<span class="fu">is.na</span>(value), <span class="st">"yes"</span>, <span class="st">"no"</span>))</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tidycars, <span class="fu">aes</span>(<span class="at">x =</span> key, <span class="at">y =</span> <span class="fu">fct_rev</span>(id), <span class="at">fill =</span> missing)) <span class="sc">+</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span> </span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"mtcars with NAs added"</span>) <span class="sc">+</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">''</span>) <span class="sc">+</span> </span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span> <span class="co"># discrete scale</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="data_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p><code>The bar graph illustrates that more than 50 features have no missing values, while only one feature has one missing value, and another feature has two missing values.</code></p>
 
 
 </section>

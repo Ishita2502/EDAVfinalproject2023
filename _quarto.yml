@@ -6,7 +6,7 @@ execute:
   echo: true
 
 book:
-  title: "TBD"
+  title: "Global Youth Tobacco Survey: India"
   author:
     - Gautam Dhall (gd2665)
     - Ishita Pundir (ip2441)
