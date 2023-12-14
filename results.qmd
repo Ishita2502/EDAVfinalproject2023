@@ -1,1 +1,31 @@
 # Results
+
+##Feature Reduction
+```{r}
+drop<- c("Ever tobacco users (%)","Ever tobacco smokers (%)","Ever cigarette users (%)","Ever bidi users (%) ","Ever smokeless tobacco users (%)","Ever users of  paan masala together with tobacco (%)","Bought Cigarette as individual sticks in past 30 days    (%)","Bought Bidi as individual sticks in past 30 days     (%)","Current cigarette smokers who bought cigarettes from a store, paan shop, street vendor, or vending machine       (%)","Current bidi smokers who bought bidi from a store, paan shop, or street vendor (%)","Exposure to tobacco smoke at home/public place (%)")
+EDAV_drop = EDAV_1_[,!(names(EDAV_1_) %in% drop)]
+```
+
+##Imputing Null Values on mean
+```{r}
+EDAV_impute <- EDAV_drop %>%
+  mutate_all(~ ifelse(is.na(.), mean(., na.rm = TRUE), .))
+```
+
+##Removing non numeric values
+```{r}
+class(EDAV_impute$`Median age of initiation of Cigarette (in years)`)
+EDAV_impute$`Median age of initiation of Cigarette (in years)` <- as.numeric(EDAV_impute$`Median age of initiation of Cigarette (in years)`)
+
+EDAV_impute$`Median age of initiation of Bidi (in years)` <- as.numeric(EDAV_impute$`Median age of initiation of Bidi (in years)`)
+
+EDAV_impute$`Median age of initiation of smokeless tobacco (in years)` <- as.numeric(EDAV_impute$`Median age of initiation of smokeless tobacco (in years)`)
+```
+```{r}
+EDAV_impute$`Median age of initiation of Cigarette (in years)` <- replace(EDAV_impute$`Median age of initiation of Cigarette (in years)`, is.na(EDAV_impute$`Median age of initiation of Cigarette (in years)`), 7)
+
+EDAV_impute$`Median age of initiation of Bidi (in years)` <- replace(EDAV_impute$`Median age of initiation of Bidi (in years)`, is.na(EDAV_impute$`Median age of initiation of Bidi (in years)`), 7)
+
+EDAV_impute$`Median age of initiation of smokeless tobacco (in years)` <- replace(EDAV_impute$`Median age of initiation of smokeless tobacco (in years)`, is.na(EDAV_impute$`Median age of initiation of smokeless tobacco (in years)`), 7)
+```
+
