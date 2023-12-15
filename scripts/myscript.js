@@ -1,3 +1,5 @@
+
+// add your JavaScript/D3 to this file
 document.addEventListener("DOMContentLoaded", function() {
             d3.csv("https://raw.githubusercontent.com/Ishita2502/EDAVfinalproject2023/main/data/cleaned_df.csv").then(function(allData) {
                 var data = allData.filter(function(d) { return d['Area'] === 'Total'; });
@@ -16,11 +18,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 var featureNames = Object.keys(featureNameMapping);
 
-                var margin = {top: 30, right: 30, bottom: 100, left: 60},
-                    width = 600 - margin.left - margin.right,
-                    height = 500 - margin.top - margin.bottom;
 
-                var svg = d3.select("#my_dataviz")
+                var margin = {top: 30, right: 30, bottom: 200, left: 60},
+                    width = 800 - margin.left - margin.right,
+                    height = 800 - margin.top - margin.bottom;
+
+                var svg = d3.select("div#plot")
                   .append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
@@ -55,26 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     y.domain([0, d3.max(dataArray, d => d.Value)]);
                     svg.selectAll(".myYaxis").transition().duration(1000).call(d3.axisLeft(y));
-
-                    svg.append("text")
-                       .attr("transform", `translate(${width / 2}, ${height + margin.top + 40})`)
-                       .style("text-anchor", "middle");
-
-
-                    svg.append("text")
-                       .attr("transform", "rotate(-90)")
-                       .attr("y", 0 - margin.left + 20)
-                       .attr("x", 0 - (height / 2))
-                       .style("text-anchor", "middle")
-                       .text("Percentage Value (%)");
-
-                    svg.append("text")
-                       .attr("x", (width / 2))
-                       .attr("y", 0 - (margin.top / 2))
-                       .attr("text-anchor", "middle")
-                       .style("font-size", "16px")
-                       .style("text-decoration", "underline")
-                       .text("Statewise Influence of Anti/ Pro Tobacco stratergies on Quitting");
 
                     var u = svg.selectAll("rect")
                         .data(dataArray);

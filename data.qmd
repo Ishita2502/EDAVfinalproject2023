@@ -105,24 +105,3 @@ ggplot(missing_data_histogram, aes(x = MissingCount)) +
 ```
 
 `The bar graph illustrates that more than 50 features have no missing values, while only one feature has one missing value, and another feature has two missing values.` 
-
-```{r}
-library(redav)
-library(ggplot2)
-library(tidyverse)
-mv <- data %>% 
-  rownames_to_column("id") %>% 
-  gather(key, value, -id) %>% 
-  mutate(missing = ifelse(is.na(value), "yes", "no"))
-
-ggplot(mv, aes(x = key, y = fct_rev(id), fill = missing)) +
-  geom_tile(color = "white") + 
-  ggtitle("Missing values in GYTS") +
-  ylab('') + 
-  scale_fill_viridis_d() + # discrete scale
-  theme_bw()
-```
-
-```{r}
-
-```

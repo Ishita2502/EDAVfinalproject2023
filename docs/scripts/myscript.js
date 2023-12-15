@@ -1,4 +1,4 @@
-// add your JavaScript/D3 to this file
+
 // add your JavaScript/D3 to this file
 document.addEventListener("DOMContentLoaded", function() {
             d3.csv("https://raw.githubusercontent.com/Ishita2502/EDAVfinalproject2023/main/data/cleaned_df.csv").then(function(allData) {
@@ -7,14 +7,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Original feature names and their short names
                 var featureNameMapping = {
 
+                    "tobacco smokers who wanted to quit smoking now ": "Tobacco users who want to Quit",
                     "Anti Tobacco messages: Health Warnings": "Health Warnings",
-                    "Anti Tobacco messages: Mass media": "Mass Media",
-                    "Anti Tobacco messages: Community events": "Community Events",
-                    "Advertisments: Mass Media": "Media Ads",
+                    "Anti Tobacco messages: Mass media": "Warnings in Mass Media",
+                    "Anti Tobacco messages: Community events": "Warnings at Community Events",
+                    "Advertisments: Mass Media": "Tobacco Advertisments",
                     "Advertisments: Promotions": "Promotions"
+
                 };
 
                 var featureNames = Object.keys(featureNameMapping);
+
 
                 var margin = {top: 30, right: 30, bottom: 200, left: 60},
                     width = 800 - margin.left - margin.right,
