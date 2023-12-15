@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -138,7 +172,32 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#data-cleaning-and-preprocessing" id="toc-data-cleaning-and-preprocessing" class="nav-link active" data-scroll-target="#data-cleaning-and-preprocessing"><span class="header-section-number">3.1</span> Data Cleaning and Preprocessing</a>
+  <ul class="collapse">
+  <li><a href="#importing-libraries" id="toc-importing-libraries" class="nav-link" data-scroll-target="#importing-libraries"><span class="header-section-number">3.1.1</span> Importing libraries</a></li>
+  <li><a href="#feature-reduction" id="toc-feature-reduction" class="nav-link" data-scroll-target="#feature-reduction"><span class="header-section-number">3.1.2</span> Feature Reduction</a></li>
+  <li><a href="#imputing-null-values-by-mean" id="toc-imputing-null-values-by-mean" class="nav-link" data-scroll-target="#imputing-null-values-by-mean"><span class="header-section-number">3.1.3</span> Imputing Null Values by mean</a></li>
+  <li><a href="#removing-non-numeric-values" id="toc-removing-non-numeric-values" class="nav-link" data-scroll-target="#removing-non-numeric-values"><span class="header-section-number">3.1.4</span> Removing non numeric values</a></li>
+  <li><a href="#cleaning-and-shortening-the-column-names" id="toc-cleaning-and-shortening-the-column-names" class="nav-link" data-scroll-target="#cleaning-and-shortening-the-column-names"><span class="header-section-number">3.1.5</span> Cleaning and shortening the column names</a></li>
+  </ul></li>
+  <li><a href="#analysis-of-data" id="toc-analysis-of-data" class="nav-link" data-scroll-target="#analysis-of-data"><span class="header-section-number">3.2</span> Analysis of Data:</a>
+  <ul class="collapse">
+  <li><a href="#graph-1-stacked-bar-chart-of-tobacco-use-in-urban-vs-rural-areas-across-india" id="toc-graph-1-stacked-bar-chart-of-tobacco-use-in-urban-vs-rural-areas-across-india" class="nav-link" data-scroll-target="#graph-1-stacked-bar-chart-of-tobacco-use-in-urban-vs-rural-areas-across-india"><span class="header-section-number">3.2.1</span> Graph 1: Stacked Bar Chart of Tobacco Use in Urban vs Rural Areas across India</a></li>
+  <li><a href="#graph-2-histograms-of-median-age-of-initiation" id="toc-graph-2-histograms-of-median-age-of-initiation" class="nav-link" data-scroll-target="#graph-2-histograms-of-median-age-of-initiation"><span class="header-section-number">3.2.2</span> Graph 2: Histograms of Median age of Initiation</a></li>
+  <li><a href="#graph-3-major-sources-of-purchase-in-rural-and-urban-india" id="toc-graph-3-major-sources-of-purchase-in-rural-and-urban-india" class="nav-link" data-scroll-target="#graph-3-major-sources-of-purchase-in-rural-and-urban-india"><span class="header-section-number">3.2.3</span> Graph 3: Major Sources of Purchase in Rural and Urban India</a></li>
+  <li><a href="#graph-4-e-cigarette-awareness-faceted-by-area" id="toc-graph-4-e-cigarette-awareness-faceted-by-area" class="nav-link" data-scroll-target="#graph-4-e-cigarette-awareness-faceted-by-area"><span class="header-section-number">3.2.4</span> Graph 4: E-cigarette Awareness faceted by Area</a></li>
+  <li><a href="#graph-5-scatterplot---exposure-vs.-tobacco-users" id="toc-graph-5-scatterplot---exposure-vs.-tobacco-users" class="nav-link" data-scroll-target="#graph-5-scatterplot---exposure-vs.-tobacco-users"><span class="header-section-number">3.2.5</span> Graph 5: Scatterplot - Exposure vs.&nbsp;Tobacco Users</a></li>
+  <li><a href="#graph-6-correlation-heatmap-between-the-current-tobacco-smokers-and-preventive-measures-taken-by-the-schools-in-various-states" id="toc-graph-6-correlation-heatmap-between-the-current-tobacco-smokers-and-preventive-measures-taken-by-the-schools-in-various-states" class="nav-link" data-scroll-target="#graph-6-correlation-heatmap-between-the-current-tobacco-smokers-and-preventive-measures-taken-by-the-schools-in-various-states"><span class="header-section-number">3.2.6</span> Graph 6: Correlation heatmap between the current tobacco smokers and preventive measures taken by the schools in various states</a></li>
+  <li><a href="#graph-7-scatterplot-of-advertisments-and-current-tobacco-users" id="toc-graph-7-scatterplot-of-advertisments-and-current-tobacco-users" class="nav-link" data-scroll-target="#graph-7-scatterplot-of-advertisments-and-current-tobacco-users"><span class="header-section-number">3.2.7</span> Graph 7: Scatterplot of Advertisments and Current Tobacco Users</a></li>
+  <li><a href="#graph-8-impact-of-pro-tobacco-advertisements-on-users" id="toc-graph-8-impact-of-pro-tobacco-advertisements-on-users" class="nav-link" data-scroll-target="#graph-8-impact-of-pro-tobacco-advertisements-on-users"><span class="header-section-number">3.2.8</span> Graph 8: Impact of Pro Tobacco Advertisements on Users</a></li>
+  <li><a href="#graph-9-impact-of-anti-tobacco-advertisements-on-users" id="toc-graph-9-impact-of-anti-tobacco-advertisements-on-users" class="nav-link" data-scroll-target="#graph-9-impact-of-anti-tobacco-advertisements-on-users"><span class="header-section-number">3.2.9</span> Graph 9: Impact of Anti Tobacco Advertisements on Users</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Ishita2502/EDAVfinalproject2023/edit/main/results.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/Ishita2502/EDAVfinalproject2023/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -160,8 +219,392 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="data-cleaning-and-preprocessing" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="data-cleaning-and-preprocessing"><span class="header-section-number">3.1</span> Data Cleaning and Preprocessing</h2>
+<section id="importing-libraries" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="importing-libraries"><span class="header-section-number">3.1.1</span> Importing libraries</h3>
+<p>The necessary packages that will be used throughout data cleaning and analyzing are imported, such as ggplot2, tidyverse, d3r, GGally etc. The data is then imported from the Github repository created.</p>
+</section>
+<section id="feature-reduction" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="feature-reduction"><span class="header-section-number">3.1.2</span> Feature Reduction</h3>
+<p>In order to reduce dimensionality, and improve model performance, certain features that provided redundant and irrelevant information were dropped, such as :</p>
+<ol type="1">
+<li><p>Ever users (Features 3, 5, 7, 9, 11, and 13) - The columns containing percent of ever tobacco, cigarette, and bidi users are dropped as we are focusing our research on the current users of these products in each state.</p></li>
+<li><p>Feature 26 ( <em>‘Exposure to tobacco smoke at home/public place (%)’</em>) is dropped as we already have <em>‘Exposure to tobacco smoke at home(%)’</em> and <em>‘Exposure to tobacco smoke inside any enclosed public places (%)’</em>, so it is not providing any new information</p></li>
+<li><p>Feature 36 and 37 ( <em>‘Current cigarette smokers who bought cigarettes from a store, paan shop, street vendor, or vending machine(%)’</em>) and ( <em>‘Current bidi smokers who bought bidi from a store, paan shop, or street vendor (%)’</em>) are dropped as well as it provides repetitive information.</p></li>
+<li><p>Feature 41 and 42 ( <em>‘Bought Cigarette as individual sticks in past 30 days(%)’</em>) and ( <em>‘Bought Bidi as individual sticks in past 30 days (%)’</em>) are dropped as they do not provide any meaningful insights.</p></li>
+<li><p>Feature 44 ( <em>‘Students who noticed anti-tobacco messages anywhere in past 30 days’</em>) is dropped as it was a cumulative column with repetitive information.</p></li>
+</ol>
+</section>
+<section id="imputing-null-values-by-mean" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="imputing-null-values-by-mean"><span class="header-section-number">3.1.3</span> Imputing Null Values by mean</h3>
+<p>The missing data values are imputed with the mean (average) value of the respective feature. While it’s not the best method to replace Null values as it assumes that they are missing at random and that imputing the mean will not introduce bias, we chose this method because we only had three missing values in the entire data frame, out of more than 6000. This made the chances of bias being introduced extremely low.</p>
+</section>
+<section id="removing-non-numeric-values" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="removing-non-numeric-values"><span class="header-section-number">3.1.4</span> Removing non numeric values</h3>
+<p>Since our data primarily consisted of numeric values, we needed to encode the few non-numeric values for proper visualization and analysis. In certain features that depict the median age of initiation of specific tobacco products, there was an entry of ‘&lt;7,’ indicating that the use of these products started even before the age of 7. We replaced this value with the numeric value ‘7,’ which served as the upper bound for the age.</p>
+</section>
+<section id="cleaning-and-shortening-the-column-names" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="cleaning-and-shortening-the-column-names"><span class="header-section-number">3.1.5</span> Cleaning and shortening the column names</h3>
+<p>The column names in the actual data frame available on the Government of India’s website were lengthy and contained a significant number of special characters and uneven spacing. These names were modified to achieve uniformity, making it easier to analyze the data with fewer errors.</p>
+</section>
+</section>
+<section id="analysis-of-data" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="analysis-of-data"><span class="header-section-number">3.2</span> Analysis of Data:</h2>
+<section id="graph-1-stacked-bar-chart-of-tobacco-use-in-urban-vs-rural-areas-across-india" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="graph-1-stacked-bar-chart-of-tobacco-use-in-urban-vs-rural-areas-across-india"><span class="header-section-number">3.2.1</span> Graph 1: Stacked Bar Chart of Tobacco Use in Urban vs Rural Areas across India</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> df[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), <span class="fu">c</span>(<span class="st">"State/UT"</span>, <span class="st">"Area"</span>, <span class="st">"tobacco users "</span>, <span class="st">"tobacco smokers "</span>, <span class="st">"cigarette users "</span>, <span class="st">"bidi users "</span>, <span class="st">"smokeless tobacco users "</span>, <span class="st">"Ever e-cigarette use "</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">=</span> df1[,<span class="sc">!</span>(<span class="fu">names</span>(df1) <span class="sc">%in%</span> <span class="st">"tobacco users "</span>)]</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape the data for ggplot</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>data_long <span class="ot">&lt;-</span> reshape2<span class="sc">::</span><span class="fu">melt</span>(df1, <span class="at">id.vars =</span> <span class="fu">c</span>(<span class="st">"State/UT"</span>, <span class="st">"Area"</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_long, <span class="fu">aes</span>(<span class="at">x =</span> Area, <span class="at">y =</span> value, <span class="at">fill =</span> variable)) <span class="sc">+</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"stack"</span>) <span class="sc">+</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Area"</span>, <span class="at">y =</span> <span class="st">"Percentage (%)"</span>, <span class="at">title =</span> <span class="st">"Tobacco Use in Urban vs Rural Areas Across India"</span>) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The chart breaks down tobacco use into several categories: tobacco smokers, cigarette users, bidi users, smokeless tobacco users, and ever e-cigarette users and directly compares the two areas (rural and urban) by stacking the different types of tobacco use.</p>
+<p>In both rural and urban areas, the most significant proportion of tobacco use is attributed to ‘tobacco smokers’. This is followed by ‘smokeless tobacco users’ (Chewing tobacco such as loose leaf, plug, or twigs) in rural areas and e-cigarette users (E-cigs, vapes, and mods) in urban areas.</p>
+<p>‘bidi users’ seem to make up a larger proportion in rural areas compared to urban areas as people have access to a wider variety of tobacco products and ‘bidi’ might not be a preferred option in comparison to the electronic cigarettes, and vapes available in cities.</p>
+</section>
+<section id="graph-2-histograms-of-median-age-of-initiation" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="graph-2-histograms-of-median-age-of-initiation"><span class="header-section-number">3.2.2</span> Graph 2: Histograms of Median age of Initiation</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Median age of initiation of Cigarette </span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"cornflowerblue"</span>, <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Age of Initiation of Cigarette Smoke in various States/UT of India"</span>) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The histogram shows that the age of initiation of cigarette smoking has a clear peak around ages 13 to 14, with a significant number of initiations occurring between ages 12 and 16. This suggests that many individuals begin smoking cigarettes in their early teenage years. There is an outlier in this data, which signifies that there is a state (Manipur) where people start smoking at a very late age.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Median age of initiation of Bidi </span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"cornflowerblue"</span>, <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age of Initiation"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Age of Initiation of Bidi in various States/UT of India"</span>) <span class="sc">+</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The age of initiation for bidi smoking is also concentrated in the early teenage years, with a notable peak around age 11. However, the distribution is slightly more spread out than that for cigarette smoking, with a range from about 8 to 14 years of age. This might reflect cultural or socioeconomic factors that make bidi smoking accessible or acceptable at a younger age in some areas.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Median age of initiation of smokeless tobacco </span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"cornflowerblue"</span>, <span class="at">color =</span> <span class="st">"purple"</span>) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Age"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Age of Initiation of Smokeless Tobacco in various States/UT of India"</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>For smokeless tobacco, the initiation age starts as early as 6 or 7, with a more dispersed distribution. There is a notable peak at age 9, and other smaller peaks throughout the age range up to 14. This suggests a wider variation in the age at which individuals start using smokeless tobacco, which may be due to differing regional practices or less stringent control over the accessibility of smokeless tobacco products to minors.</p>
+<p>When comparing the three histograms, it seems that the initiation of smokeless tobacco starts at a younger age compared to smoking cigarettes or bidi. This could be due to the perception that smokeless tobacco is less harmful, or it could be more easily accessible to younger individuals. The fact that tobacco initiation is occurring in early adolescence (or even childhood) is concerning from a public health perspective. It indicates the need for effective tobacco control measures and education about the risks of tobacco use targeted at children and young teens.</p>
+</section>
+<section id="graph-3-major-sources-of-purchase-in-rural-and-urban-india" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="graph-3-major-sources-of-purchase-in-rural-and-urban-india"><span class="header-section-number">3.2.3</span> Graph 3: Major Sources of Purchase in Rural and Urban India</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df[, <span class="fu">c</span>(<span class="st">"State/UT"</span>, <span class="st">"Area"</span>, <span class="st">"Cigarette: Store "</span>, <span class="st">"Cigarette: Paan shop "</span>, <span class="st">"Bidi: Store "</span>, <span class="st">"Bidi: Paan shop "</span>, <span class="st">"Smokeless tobacco: Store "</span>, <span class="st">"Smokeless tobacco: Paan shop "</span> )]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> df2[df2<span class="sc">$</span>Area <span class="sc">!=</span> <span class="st">"Total"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df2_rural <span class="ot">&lt;-</span> df2[df2<span class="sc">$</span>Area <span class="sc">!=</span> <span class="st">"Urban"</span>, ]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df2_urban <span class="ot">&lt;-</span> df2[df2<span class="sc">$</span>Area <span class="sc">!=</span> <span class="st">"Rural"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df2u <span class="ot">&lt;-</span> df2_urban <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">"Cigarette: Store "</span>, <span class="st">"Cigarette: Paan shop "</span>, <span class="st">"Bidi: Store "</span>, <span class="st">"Bidi: Paan shop "</span>, <span class="st">"Smokeless tobacco: Store "</span>, <span class="st">"Smokeless tobacco: Paan shop "</span>),</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">names_to=</span><span class="st">'Sources'</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_to=</span><span class="st">'Percentage'</span>) </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#df2u</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df2r <span class="ot">&lt;-</span> df2_rural <span class="sc">|&gt;</span> <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(<span class="st">"Cigarette: Store "</span>, <span class="st">"Cigarette: Paan shop "</span>, <span class="st">"Bidi: Store "</span>, <span class="st">"Bidi: Paan shop "</span>, <span class="st">"Smokeless tobacco: Store "</span>, <span class="st">"Smokeless tobacco: Paan shop "</span>),</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">names_to=</span><span class="st">'Sources'</span>,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">values_to=</span><span class="st">'Percentage'</span>) </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#df2r</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df2u, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">"Sources"</span>, <span class="at">y =</span> Percentage, <span class="at">fill =</span> Sources)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sources of Tobacco Products: Urban India"</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df2r, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">"Sources"</span>, <span class="at">y =</span> Percentage, <span class="at">fill =</span> Sources)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="at">theta =</span> <span class="st">"y"</span>) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Sources of Tobacco Products: Rural India"</span>) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Paan shops play a significant role as a source of tobacco products in both urban and rural India, as indicated by the substantial segments representing tobacco products obtained from paan shops.</p>
+<p>Bidi and smokeless tobacco are frequently purchased from paan shops in both urban and rural settings, underscoring their cultural association with these outlets. The ready availability of paan shops in every neighborhood across India implies that they are easily accessible even to children, which could contribute to the low median age of initiation for these two products.</p>
+<p>The segments representing cigarettes from stores and paan shops are roughly equal in size in both urban and rural charts, suggesting a balanced distribution of cigarette sources.</p>
+<p>Overall, the pie charts for urban and rural distribution demonstrate minimal variation in the sources for tobacco products. While paan shops serve as a common local source for bidi and smokeless tobacco, the source for cigarettes can be relatively interchangeable between stores and paan shops.</p>
+</section>
+<section id="graph-4-e-cigarette-awareness-faceted-by-area" class="level3" data-number="3.2.4">
+<h3 data-number="3.2.4" class="anchored" data-anchor-id="graph-4-e-cigarette-awareness-faceted-by-area"><span class="header-section-number">3.2.4</span> Graph 4: E-cigarette Awareness faceted by Area</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#df$Awareness &lt;- EDAV_impute$`Awareness about e-cigarette (%)`</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">State/UT</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">Awareness about e-cigarette </span><span class="st">`</span>, <span class="at">fill =</span> Area)) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"State/UT"</span>, <span class="at">y =</span> <span class="st">"Awareness (%)"</span>, <span class="at">title =</span> <span class="st">"Awareness about E-cigarette in Indian States/UTs Faceted by Area"</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Area, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="1920"></p>
+</div>
+</div>
+<p>There is a clear pattern that in most states and UTs, the awareness levels are higher in urban areas compared to rural areas which can be attributed to better access to information, and a strong influence of western culture and products, specially on impressionable minds that are studied in this survey.</p>
+<p>Some states/UTs show high awareness levels in both rural and urban areas, while others show a stark contrast between the two. This may indicate the spread of information, trends and cultures between the urban and rural areas of the state which can depict the information divide between the two.</p>
+<p>Certain regions, such as Sikkim, Uttarakhand and Tripura stand out with particularly high levels of awareness about e-cigarettes. Further geographical analysis shows that this could be a trend in the mountainous regions of the country, where youth may be more inclined towards electronic cigarettes due to difficulties in using fire for lighting at high altitudes.</p>
+<p><strong>Impossibility</strong> - The extremely low level of awareness about E-cigarette use in Karnataka, specially when the rural awareness is at par with others, and the neighbouring states have a significant awareness as well seems to be an incorrect data point.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#General plot - to make it without total:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="ot">&lt;-</span> df[df<span class="sc">$</span>Area <span class="sc">!=</span> <span class="st">"Total"</span>, ]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_filtered, <span class="fu">aes</span>(<span class="at">x =</span> Area, <span class="at">y =</span> <span class="st">`</span><span class="at">Awareness about e-cigarette </span><span class="st">`</span>, <span class="at">fill =</span> Area)) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Awareness about E-cigarette in Indian States/UTs faceted by Area"</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Area"</span>,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Awareness about e-cigarette (%)"</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="cn">NULL</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> Area, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The graph simply shows a higher number of people being aware of E-cigarette use in Urban areas as compared to rural, which agrees with our previous graph that e-cigarettes are consumed more in those regions as compared to the rural ones.</p>
+</section>
+<section id="graph-5-scatterplot---exposure-vs.-tobacco-users" class="level3" data-number="3.2.5">
+<h3 data-number="3.2.5" class="anchored" data-anchor-id="graph-5-scatterplot---exposure-vs.-tobacco-users"><span class="header-section-number">3.2.5</span> Graph 5: Scatterplot - Exposure vs.&nbsp;Tobacco Users</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot 1</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>sp1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Exposure to tobacco smoke at home </span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">tobacco users </span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Exposure at Home vs. Current Tobacco Users"</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Exposure to tobacco smoke at home (%)"</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Current tobacco users (%)"</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot 2</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>sp2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Exposure to tobacco smoke inside any enclosed public places </span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">tobacco users </span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Exposure in Enclosed Public Spaces vs. Current Tobacco Users"</span>,</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Exposure to tobacco smoke in enclosed public spaces (%)"</span>,</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Current tobacco users (%)"</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot 3</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>sp3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Exposure to tobacco smoke at any outdoor public places </span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">tobacco users </span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Exposure at Outdoor Public Places vs. Current Tobacco Users"</span>,</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Exposure to tobacco smoke at outdoor public places"</span>,</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Current tobacco users (%)"</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot 4</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>sp4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Exposure to tobacco smoke at School</span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">tobacco users </span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Exposure at School vs. Current Tobacco Users"</span>,</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Exposure to tobacco smoke at school"</span>,</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Current tobacco users (%)"</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(sp1, sp2, sp3, sp4, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Across all environments, there seems to be a general trend that higher exposure to tobacco smoke is associated with higher percentages of current tobacco users, since the scatterplots show a positive correlation in all 4 cases. This may reflect both the influence of being around smokers and the contribution of current smokers to the secondhand smoke in these environments.</p>
+<ol type="1">
+<li><p>Exposure at Home: There appears to be a positive correlation between exposure to tobacco smoke at home and the percentage of current tobacco users. This suggests that households with smokers are less likely to restrict smoking, resulting in higher secondhand smoke exposure.</p></li>
+<li><p>Exposure in Enclosed Public Spaces: The scatter plot shows a wide dispersion of points, suggesting a variable relationship between exposure to tobacco smoke in enclosed public spaces and the percentage of current tobacco users. While there’s a trend of more current tobacco users with increased exposure, the relationship doesn’t appear to be as strong as with home exposure, indicating that other factors may influence tobacco use in these settings.</p></li>
+<li><p>Exposure at Outdoor Public Places: There is a noticeable positive trend, where higher exposure to tobacco smoke at outdoor public places corresponds to a higher percentage of current tobacco users. This could imply that where smoking is more prevalent in public areas, there is also a higher likelihood of encountering current smokers.</p></li>
+<li><p>Exposure at School: This scatter plot also indicates a positive trend, although the data points are more scattered. Higher exposure rates at schools correlate with higher percentages of current tobacco users among the observed populations. This might reflect the influence of peer presence and social environments on tobacco use among school-goers.</p></li>
+</ol>
+</section>
+<section id="graph-6-correlation-heatmap-between-the-current-tobacco-smokers-and-preventive-measures-taken-by-the-schools-in-various-states" class="level3" data-number="3.2.6">
+<h3 data-number="3.2.6" class="anchored" data-anchor-id="graph-6-correlation-heatmap-between-the-current-tobacco-smokers-and-preventive-measures-taken-by-the-schools-in-various-states"><span class="header-section-number">3.2.6</span> Graph 6: Correlation heatmap between the current tobacco smokers and preventive measures taken by the schools in various states</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>selected_columns <span class="ot">&lt;-</span> df_filtered[, <span class="fu">c</span>(<span class="st">"tobacco users "</span>, <span class="st">"Students who were taught in class about harmful effects of tobacco use during past 12 months "</span>, <span class="st">"School heads aware of COTPA, 2003 "</span>, <span class="st">"Schools authorized by the state government to collect fine for violation under Section-6 of the COTPA, 2003 "</span>, <span class="st">"Schools followed ‘tobacco-free school’ guidelines "</span>, <span class="st">"Schools aware of the policy for displaying ‘tobacco-free school’ board "</span>)]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>cor_matrix <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cor</span>(selected_columns),<span class="dv">2</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>melted_cormat <span class="ot">&lt;-</span> <span class="fu">melt</span>(cor_matrix)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#head(melted_cormat)</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> melted_cormat, <span class="fu">aes</span>(<span class="at">x =</span> Var1, <span class="at">y =</span> Var2,<span class="at">fill=</span>value)) <span class="sc">+</span> </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>() <span class="sc">+</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(Var2, Var1, <span class="at">label =</span> value), <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">size=</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="1440"></p>
+</div>
+</div>
+<p>There seems to be a strong positive correlation (0.76) between schools being aware of the tobacco-free school policy and following the tobacco-free school guidelines, which suggests that awareness is likely to lead to implementation.</p>
+<p>The correlation between schools authorized to collect fines under COTPA and school heads’ awareness of COTPA is positive (0.43), indicating that when school heads are aware of the laws, schools are more likely to be involved in enforcement.</p>
+<p>There is a positive correlation (0.32) between the percentage of tobacco users and students being taught about the harmful effects of tobacco use. The correlation is not that high which might suggest that a more comprehensive education is needed to effectively lower usage rates, as the current one might just be making them aware of the products but not actually making them realize the need to quit/ not start.</p>
+<p>Some variables show very low correlation with each other, like the awareness of the policy for displaying a ‘tobacco-free school’ board and the percentage of tobacco users (-0.06), which implies that simply being aware of the policy does not necessarily translate to a reduction in tobacco usage among students.</p>
+</section>
+<section id="graph-7-scatterplot-of-advertisments-and-current-tobacco-users" class="level3" data-number="3.2.7">
+<h3 data-number="3.2.7" class="anchored" data-anchor-id="graph-7-scatterplot-of-advertisments-and-current-tobacco-users"><span class="header-section-number">3.2.7</span> Graph 7: Scatterplot of Advertisments and Current Tobacco Users</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Students who saw tobacco advertisements anywhere in past 30 days </span><span class="st">`</span>, <span class="at">y =</span> <span class="st">`</span><span class="at">tobacco users </span><span class="st">`</span>, <span class="at">color =</span> Area)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Tobacco Advertisments vs. Tobacco Users"</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Students who saw tobacco advertisements anywhere in past 30 days"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Current tobacco users (%)"</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>There does not seem to be a clear, strong correlation between the exposure to tobacco advertisements and the percentage of current tobacco users. The points are spread across the plot without a distinct pattern indicating a strong linear relationship.</p>
+<p>However, it appears that in some cases, urban areas (blue dots) may have a higher percentage of students who have seen tobacco advertisements compared to rural areas (red dots), which could be due to a higher density of advertising platforms and a greater reach in urban areas but this does not uniformly translate to a higher percentage of current tobacco users. The total percentages (green dots) are interspersed among the rural and urban ones, suggesting that the overall pattern is influenced by both rural and urban data and does not favor one over the other significantly.</p>
+</section>
+<section id="graph-8-impact-of-pro-tobacco-advertisements-on-users" class="level3" data-number="3.2.8">
+<h3 data-number="3.2.8" class="anchored" data-anchor-id="graph-8-impact-of-pro-tobacco-advertisements-on-users"><span class="header-section-number">3.2.8</span> Graph 8: Impact of Pro Tobacco Advertisements on Users</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> df[, <span class="fu">c</span>(<span class="st">"State/UT"</span>,<span class="st">"Area"</span>, <span class="st">"Advertisments: Mass Media"</span>, <span class="st">"tobacco users "</span>,<span class="st">"Advertisments: Promotions"</span>)]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>df3_a <span class="ot">&lt;-</span> df3[df3<span class="sc">$</span>Area <span class="sc">!=</span> <span class="st">"Total"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggparcoord</span>(df3_a, <span class="at">alphaLines =</span> <span class="fl">0.8</span>, <span class="at">columns =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">groupColumn =</span> <span class="st">"Area"</span>) <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Impact of Pro Tobacco Advertisements on Users"</span>, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>, <span class="at">title.size =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+<p>Although most of the data trends towards the lower end of the tobacco users axis, careful consideration reveals that higher values on advertisements in mass media imply a greater number of tobacco users. A similar trend is observed in the relationship between promotions and users, indicating a general positive correlation between the two and tobacco use. However, the correlation is not particularly strong, and numerous outliers exist. These outliers may suggest that the data may not precisely reflect reality, potentially containing collection errors, or that advertisements can sometimes evoke repulsion and reduce motivation to purchase tobacco products.</p>
+<p>The urban lines (in blue) are higher on the advertisement axes, reflecting a higher saturation of tobacco advertisements in urban areas.</p>
+<p>The lines that appear high on the ‘Tobacco Users’ axis but low on both advertisement axes might represent areas where tobacco use is prevalent despite low advertisement exposure. This suggests that factors other than advertisements influence tobacco use in these regions, such as peer pressure, household exposure, weather conditions, cultural norms, and societal influences.</p>
+</section>
+<section id="graph-9-impact-of-anti-tobacco-advertisements-on-users" class="level3" data-number="3.2.9">
+<h3 data-number="3.2.9" class="anchored" data-anchor-id="graph-9-impact-of-anti-tobacco-advertisements-on-users"><span class="header-section-number">3.2.9</span> Graph 9: Impact of Anti Tobacco Advertisements on Users</h3>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df4 <span class="ot">&lt;-</span> df[, <span class="fu">c</span>(<span class="st">"State/UT"</span>,<span class="st">"Area"</span>,<span class="st">"Anti Tobacco messages: Mass media"</span>,<span class="st">"tobacco users "</span>, <span class="st">"Anti Tobacco messages: Community events"</span>, <span class="st">"Anti Tobacco messages: Health Warnings"</span>)]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>df4_a <span class="ot">&lt;-</span> df4[df4<span class="sc">$</span>Area <span class="sc">!=</span> <span class="st">"Total"</span>, ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggparcoord</span>(df4_a, <span class="at">alphaLines =</span> <span class="fl">0.8</span>, <span class="at">columns =</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">groupColumn =</span> <span class="st">"Area"</span>) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Impact of Anti Tobacco Advertisements on Users"</span>, </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">""</span>, <span class="at">title.size =</span> <span class="dv">40</span>) <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="results_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<p>The plot reveals complex relationships, with no clear, single pattern emerging. This suggests that the relationship between anti-tobacco efforts and tobacco usage is multifaceted and may be influenced by additional uncharted factors.</p>
+<p>In rural areas (indicated by the red lines), most data points in the lower region of the ‘Anti-Tobacco Messages in Mass Media’ axis are associated with high values of tobacco users, indicating a negative correlation. This negative correlation suggests that anti-tobacco advertisements and warnings are effective in reducing tobacco product use.</p>
+<p>Overall, the dominance of blue lines over red lines in the graph indicates that anti-tobacco campaigns are more prevalent, and there is greater effort to curb tobacco use in urban areas compared to rural areas.</p>
+<p>There are noteworthy observations in this dataset, such as the case where ‘Anti-Tobacco Messages in Community Events’ is extremely low (indicated by the urban area’s blue line), but tobacco use in this region is also very low. This suggests that tobacco use is so minimal that extensive anti-tobacco programs may not be necessary.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -417,7 +860,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Ishita2502/EDAVfinalproject2023/edit/main/results.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/Ishita2502/EDAVfinalproject2023/issues/new" class="toc-action">Report an issue</a></p></div></div></div>
+    </div>
     <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
   </div>
 </footer>
