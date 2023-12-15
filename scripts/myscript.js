@@ -1,4 +1,3 @@
-// add your JavaScript/D3 to this file
 document.addEventListener("DOMContentLoaded", function() {
             d3.csv("https://raw.githubusercontent.com/Ishita2502/EDAVfinalproject2023/main/data/cleaned_df.csv").then(function(allData) {
                 var data = allData.filter(function(d) { return d['Area'] === 'Total'; });
