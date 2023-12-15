@@ -61,7 +61,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     var u = svg.selectAll("rect")
                         .data(dataArray);
+                    svg.append("text")
+                       .attr("transform", "rotate(-90)")
+                       .attr("y", 0 - margin.left + 20)
+                       .attr("x", 0 - (height / 2))
+                       .style("text-anchor", "middle")
+                       .text("Percentage Value (%)");
 
+                    svg.append("text")
+                       .attr("x", (width / 2))
+                       .attr("y", 0 - (margin.top / 2))
+                       .attr("text-anchor", "middle")
+                       .style("font-size", "16px")
+                       .style("text-decoration", "underline")
+                       .text("Statewise Influence of Anti/ Pro Tobacco stratergies on Quitting");
+
+                    var u = svg.selectAll("rect")
+                        .data(dataArray);
                     u.join("rect")
                         .transition()
                         .duration(1000)
